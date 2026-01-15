@@ -101,14 +101,13 @@ def make_demo_data(
     """
 
     # =========================
-    # 1️⃣ 基础设置
+    # 基础设置
     # =========================
     np.random.seed(seed)
     dates = pd.bdate_range(start=start, periods=n)
 
     # =========================
-    # 2️⃣ 模拟期货日收益率
-    #    （可理解为10年国债期货主力复权收益）
+    # 模拟期货日收益率（可理解为10年国债期货主力复权收益）
     # =========================
     base_noise = np.random.normal(loc=0, scale=0.004, size=n)
 
@@ -127,7 +126,7 @@ def make_demo_data(
     fut_ret = pd.Series(fut_ret, index=dates, name="fut_ret")
 
     # =========================
-    # 3️⃣ 模拟因子（6 个示例）
+    # 模拟因子（6 个示例）
     # =========================
     factors = pd.DataFrame(index=dates)
 

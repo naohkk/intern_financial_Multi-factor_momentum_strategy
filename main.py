@@ -42,7 +42,7 @@ def perf_stats(strategy_ret: pd.Series, freq: int = 252) -> dict:
     }
 
 # =========================
-# 1️⃣ 数据读取（只看 config）
+# 1） 数据读取（只看 config）
 # =========================
 
 if DATA_SOURCE == "demo":
@@ -70,12 +70,6 @@ else:
     raise ValueError(f"Unknown DATA_SOURCE: {DATA_SOURCE}")
 
 dates = fut_ret.index
-
-# =========================
-# 2️⃣ 后面接你原来的策略流程
-# =========================
-# factors = factors.shift(1)
-# 信号 → pos → pos_exec → 回测
 
 # =========================
 # 2) 防未来函数：t日信号只能用t-1已知信息
@@ -159,12 +153,12 @@ print(perf_stats(in_sample))
 print("\n=== OUT-OF-SAMPLE ===")
 print(perf_stats(out_sample))
 
-# 额外：看下胜率（样本外）
+# 额外：样本外胜率
 oos = out_sample.dropna()
 win_rate = (oos > 0).mean() if len(oos) else np.nan
 print(f"\nOOS WinRate: {win_rate:.3f}")
 
-# 如果你想快速看最后的累计净值（不画图也能看）
+# 最后的累计净值（不画图也能看）
 equity_oos = (1 + out_sample.fillna(0)).cumprod()
 print("\nOOS Equity (tail):")
 print(equity_oos.tail())

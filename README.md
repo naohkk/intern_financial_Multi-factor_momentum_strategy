@@ -1,0 +1,2 @@
+# intern_financial_Multi-factor_momentum_strategy
+可以使用多因子进行动量策略，通过因子信号来进行买/卖
